@@ -1,0 +1,32 @@
+[package]
+name = "rgd"
+description = "Installed game detection utility for Linux"
+version = "1.0.0"
+edition = "2024"
+authors = ["Rolv Apneseth <rolv.apneseth@gmail.com>"]
+rust-version = "1.89"
+repository = "https://github.com/rolv-apneseth/rgd"
+homepage = "https://github.com/rolv-apneseth/rgd"
+license = "AGPL-3.0"
+include = ["/src"]
+keywords = ["games", "detection"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+lib_game_detector = { version = "=0.0.23" }
+tracing = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = { version = "0.2" }
+dirs = { version = "6.0" }
+serde_json = { version = "1.0" }
+clap = { version = "4.5", features = ["derive", "env"] }
+color-eyre = { version = "0.6", features = ["url"] }
+
+[dev-dependencies]
+pretty_assertions = "1.4"
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
