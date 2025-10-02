@@ -3,10 +3,7 @@ use std::io::{Read, stdin};
 use clap::{Parser, Subcommand, command};
 use color_eyre::eyre::Context;
 
-use crate::{
-    data::GameField,
-    handlers::{get, list},
-};
+use crate::{data::GameField, handlers::{get, list}};
 
 #[derive(Parser, Debug)]
 #[command(version, about)]

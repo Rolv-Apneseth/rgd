@@ -3,14 +3,7 @@ use std::io::{Write, stdout};
 use clap::Parser;
 use color_eyre::{Result, eyre::Context};
 
-use crate::{
-    cli::{GameDetailArgs, IdentifyGameArgs},
-    handlers::{
-        HandleSubcommand,
-        utils::{find_game, game_to_csv, get_delimiter},
-    },
-    utils::ignore_broken_pipe,
-};
+use crate::{cli::{GameDetailArgs, IdentifyGameArgs}, handlers::{HandleSubcommand, utils::{find_game, game_to_csv, get_delimiter}}, utils::ignore_broken_pipe};
 
 #[derive(Debug, Parser)]
 pub struct Command {

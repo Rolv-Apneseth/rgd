@@ -1,10 +1,7 @@
 use color_eyre::{Result, eyre::eyre};
 use lib_game_detector::data::Game;
 
-use crate::{
-    cli::{GameDetailArgs, IdentifyGameArgs},
-    data::GameField,
-};
+use crate::{cli::{GameDetailArgs, IdentifyGameArgs}, data::GameField};
 
 /// Find a game matching the given [`IdentifyGameArgs`].
 ///
