@@ -9,7 +9,7 @@
   <a href="https://aur.archlinux.org/packages/rgd"><img src="https://img.shields.io/aur/version/rgd" alt="AUR version" /></a>
 </p>
 
-<img alt="rgd demo" src="https://github.com/user-attachments/assets/745e9b74-c766-4fa6-981d-e3ef7885bda4" />
+<img alt="rgd demo" src="./assets/demo.webp" />
 
 <p align="center"><em>Can you tell I'm not a graphic designer?</em></p>
 
