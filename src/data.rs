@@ -1,4 +1,4 @@
-use std::borrow::Cow;
+use std::{borrow::Cow, fmt::Display};
 
 use clap::ValueEnum;
 use lib_game_detector::data::{Game, SupportedLaunchers};
@@ -12,6 +12,7 @@ pub enum GameField {
     PathBoxArt,
     PathGameDir,
     LaunchCommand,
+    Source,
 }
 
 impl GameField {
@@ -22,6 +23,7 @@ impl GameField {
             GameField::PathBoxArt => display_opt_path(game.path_box_art.as_ref()).into(),
             GameField::PathGameDir => display_opt_path(game.path_game_dir.as_ref()).into(),
             GameField::LaunchCommand => (format!("{:?}", game.launch_command)).into(),
+            GameField::Source => game.source.to_string().into(),
         }
     }
 }
@@ -34,6 +36,23 @@ pub enum RgdSupportedLaunchers {
     Heroic,
     Prism,
     AT,
+}
+
+impl Display for RgdSupportedLaunchers {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                RgdSupportedLaunchers::Steam => "Steam",
+                RgdSupportedLaunchers::Lutris => "Lutris",
+                RgdSupportedLaunchers::Bottles => "Bottles",
+                RgdSupportedLaunchers::Heroic => "Heroic Games Launcher",
+                RgdSupportedLaunchers::Prism => "Prism Launcher",
+                RgdSupportedLaunchers::AT => "ATLauncher",
+            }
+        )
+    }
 }
 
 impl RgdSupportedLaunchers {
@@ -90,11 +109,28 @@ mod test {
             path_box_art: Some(PathBuf::from("/home/rolv")),
             path_game_dir: Some(PathBuf::from("/")),
             launch_command: Command::new("ls"),
+            source: SupportedLaunchers::Steam,
         };
         assert_eq!(GameField::Title.get_from_game(&game), String::from("test"));
         assert_eq!(GameField::PathIcon.get_from_game(&game), "");
         assert_eq!(GameField::PathBoxArt.get_from_game(&game), "/home/rolv");
         assert_eq!(GameField::PathGameDir.get_from_game(&game), "/");
         assert_eq!(GameField::LaunchCommand.get_from_game(&game), "\"ls\"");
+        assert_eq!(GameField::Source.get_from_game(&game), "Steam");
+
+        let game = Game {
+            title: String::from("test2"),
+            path_icon: None,
+            path_box_art: Some(PathBuf::from("/")),
+            path_game_dir: Some(PathBuf::from("/home/user")),
+            launch_command: Command::new("echo"),
+            source: SupportedLaunchers::Lutris,
+        };
+        assert_eq!(GameField::Title.get_from_game(&game), String::from("test2"));
+        assert_eq!(GameField::PathIcon.get_from_game(&game), "");
+        assert_eq!(GameField::PathBoxArt.get_from_game(&game), "/");
+        assert_eq!(GameField::PathGameDir.get_from_game(&game), "/home/user");
+        assert_eq!(GameField::LaunchCommand.get_from_game(&game), "\"echo\"");
+        assert_eq!(GameField::Source.get_from_game(&game), "Lutris");
     }
 }

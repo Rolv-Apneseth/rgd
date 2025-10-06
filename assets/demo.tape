@@ -9,7 +9,7 @@ Set Height 1080
 Set FontFamily "Inconsolata Nerd Font Mono"
 Set PlaybackSpeed 0.5
 
-Type "rgd list --fields title" Sleep 250ms  Enter
+Type "rgd list --fields title | sort -r" Sleep 250ms  Enter
 Sleep 1s
 Type "clear" Sleep 50ms Enter
 
