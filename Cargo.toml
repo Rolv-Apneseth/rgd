@@ -13,7 +13,7 @@ keywords = ["games", "detection"]
 categories = ["command-line-utilities"]
 
 [dependencies]
-lib_game_detector = { version = "=0.0.23" }
+lib_game_detector = { version = "=0.0.24" }
 tracing = { version = "0.1" }
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tracing-appender = { version = "0.2" }
