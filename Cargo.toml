@@ -13,7 +13,7 @@ keywords = ["games", "detection"]
 categories = ["command-line-utilities"]
 
 [dependencies]
-lib_game_detector = { version = "=0.0.24" }
+lib_game_detector = { version = "=0.0.26" }
 tracing = { version = "0.1" }
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tracing-appender = { version = "0.2" }
@@ -30,3 +30,7 @@ strip = true
 opt-level = "z"
 lto = true
 codegen-units = 1
+
+[features]
+default = []
+bundled_sqlite = ["lib_game_detector/bundled_sqlite"]
