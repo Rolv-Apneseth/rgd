@@ -36,6 +36,7 @@ pub enum RgdSupportedLaunchers {
     Heroic,
     Prism,
     AT,
+    Itch,
 }
 
 impl Display for RgdSupportedLaunchers {
@@ -50,6 +51,7 @@ impl Display for RgdSupportedLaunchers {
                 RgdSupportedLaunchers::Heroic => "Heroic Games Launcher",
                 RgdSupportedLaunchers::Prism => "Prism Launcher",
                 RgdSupportedLaunchers::AT => "ATLauncher",
+                RgdSupportedLaunchers::Itch => "Itch",
             }
         )
     }
@@ -72,6 +74,7 @@ impl RgdSupportedLaunchers {
             ],
             RgdSupportedLaunchers::Prism => vec![SupportedLaunchers::MinecraftPrism],
             RgdSupportedLaunchers::AT => vec![SupportedLaunchers::MinecraftAT],
+            RgdSupportedLaunchers::Itch => vec![SupportedLaunchers::Itch],
         }
     }
 }
@@ -89,6 +92,7 @@ impl From<SupportedLaunchers> for RgdSupportedLaunchers {
             SupportedLaunchers::HeroicGamesSideload => RgdSupportedLaunchers::Heroic,
             SupportedLaunchers::MinecraftPrism => RgdSupportedLaunchers::Prism,
             SupportedLaunchers::MinecraftAT => RgdSupportedLaunchers::AT,
+            SupportedLaunchers::Itch => RgdSupportedLaunchers::Itch,
         }
     }
 }
