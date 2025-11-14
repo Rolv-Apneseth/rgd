@@ -25,12 +25,14 @@ jobs:
   upload-binaries:
     name: ${{ matrix.target }}
     if: github.repository_owner == 'rolv-apneseth'
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         include:
           - target: aarch64-unknown-linux-gnu
+            os: ubuntu-24.04-arm
           - target: x86_64-unknown-linux-gnu
+            os: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -39,6 +41,7 @@ jobs:
       - uses: taiki-e/setup-cross-toolchain-action@v1
         with:
           target: ${{ matrix.target }}
+          features: "bundled_sqlite"
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: rgd
