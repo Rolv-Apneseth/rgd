@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2](https://github.com/Rolv-Apneseth/rgd/compare/v1.2.1...v1.2.2) - 2025-12-01
+
+### Fixed
+
+- update `lib_game_detector` to not fail on a single invalid steam library ([#8](https://github.com/Rolv-Apneseth/rgd/pull/8))
+
 ## [1.2.1](https://github.com/Rolv-Apneseth/rgd/compare/v1.2.0...v1.2.1) - 2025-11-14
 
 ### Fixed
