@@ -1,6 +1,6 @@
 use std::io::{Read, stdin};
 
-use clap::{Parser, Subcommand, command};
+use clap::{Parser, Subcommand};
 use color_eyre::eyre::Context;
 
 use crate::{data::GameField, handlers::{get, list}};
