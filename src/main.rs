@@ -13,6 +13,7 @@ fn main() -> Result<()> {
     color_eyre::install()?;
 
     let _log_guard = init_logging()?;
+    tracing::info!("Version {}", env!("CARGO_PKG_VERSION"));
 
     tracing::trace!("Parsing args");
     let args = Cli::parse();
