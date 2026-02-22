@@ -1,4 +1,4 @@
-use std::{borrow::Cow, fmt::Display};
+use std::borrow::Cow;
 
 use clap::ValueEnum;
 use lib_game_detector::data::{Game, SupportedLaunchers};
@@ -37,24 +37,6 @@ pub enum RgdSupportedLaunchers {
     Prism,
     AT,
     Itch,
-}
-
-impl Display for RgdSupportedLaunchers {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "{}",
-            match self {
-                RgdSupportedLaunchers::Steam => "Steam",
-                RgdSupportedLaunchers::Lutris => "Lutris",
-                RgdSupportedLaunchers::Bottles => "Bottles",
-                RgdSupportedLaunchers::Heroic => "Heroic Games Launcher",
-                RgdSupportedLaunchers::Prism => "Prism Launcher",
-                RgdSupportedLaunchers::AT => "ATLauncher",
-                RgdSupportedLaunchers::Itch => "Itch",
-            }
-        )
-    }
 }
 
 impl RgdSupportedLaunchers {
