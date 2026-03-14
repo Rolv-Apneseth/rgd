@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0](https://github.com/Rolv-Apneseth/rgd/compare/v1.2.2...v1.3.0) - 2026-03-14
+
+### Added
+
+- log package version for additional context in log output
+
+### Fixed
+
+- *(lib_game_detector)* improve Steam support for different distros by following symlinks
+- *(lib_game_detector)* differentiate between Lutris entries which share an executable
+- *(lib_game_detector)* parse actual instance names from Prism ([#14](https://github.com/Rolv-Apneseth/rgd/pull/14))
+
 ## [1.2.2](https://github.com/Rolv-Apneseth/rgd/compare/v1.2.1...v1.2.2) - 2025-12-01
 
 ### Fixed
