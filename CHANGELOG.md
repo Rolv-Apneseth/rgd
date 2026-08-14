@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0](https://github.com/Rolv-Apneseth/rgd/compare/v1.3.1...v1.4.0) - 2026-08-14
+
+### Added
+
+- *(lib_game_detector)* bump to 0.0.36
+
 ## [1.3.1](https://github.com/Rolv-Apneseth/rgd/compare/v1.3.0...v1.3.1) - 2026-03-21
 
 ### Fixed
