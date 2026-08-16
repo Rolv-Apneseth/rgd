@@ -41,6 +41,7 @@ pub enum RgdSupportedLaunchers {
     Prism,
     AT,
     Itch,
+    Faugus,
 }
 
 impl RgdSupportedLaunchers {
@@ -61,6 +62,7 @@ impl RgdSupportedLaunchers {
             RgdSupportedLaunchers::Prism => vec![SupportedLaunchers::MinecraftPrism],
             RgdSupportedLaunchers::AT => vec![SupportedLaunchers::MinecraftAT],
             RgdSupportedLaunchers::Itch => vec![SupportedLaunchers::Itch],
+            RgdSupportedLaunchers::Faugus => vec![SupportedLaunchers::Faugus],
         }
     }
 }
@@ -79,6 +81,7 @@ impl From<SupportedLaunchers> for RgdSupportedLaunchers {
             SupportedLaunchers::MinecraftPrism => RgdSupportedLaunchers::Prism,
             SupportedLaunchers::MinecraftAT => RgdSupportedLaunchers::AT,
             SupportedLaunchers::Itch => RgdSupportedLaunchers::Itch,
+            SupportedLaunchers::Faugus => RgdSupportedLaunchers::Faugus,
         }
     }
 }
