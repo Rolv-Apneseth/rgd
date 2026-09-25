@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0](https://github.com/Rolv-Apneseth/rgd/compare/v1.5.0...v1.6.0) - 2026-09-25
+
+### Added
+
+- *(lib_game_detector)* add support for custom bottles directory
+
 ## [1.5.0](https://github.com/Rolv-Apneseth/rgd/compare/v1.4.0...v1.5.0) - 2026-08-16
 
 ### Added
