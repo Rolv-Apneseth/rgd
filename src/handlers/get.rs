@@ -20,7 +20,8 @@ impl HandleSubcommand for Command {
 
         let game = find_game(game_id)?;
 
-        // Format output - either CSV with a specific delimiter (and no header), or JSON
+        // Format output - either CSV with a specific delimiter (and no header),
+        // or JSON
         let output = if details.json {
             serde_json::to_string_pretty(&game).context("failed to serialize games")?
         } else {
