@@ -1,0 +1,162 @@
+#compdef rgd
+
+autoload -U is-at-least
+
+_rgd() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_rgd_commands" \
+"*::: :->rgd" \
+&& ret=0
+    case $state in
+    (rgd)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rgd-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'-s+[Specify the source (launcher) for which to list games from]:SOURCE:(steam lutris bottles heroic prism at itch faugus)' \
+'--source=[Specify the source (launcher) for which to list games from]:SOURCE:(steam lutris bottles heroic prism at itch faugus)' \
+'(-j --json)-d+[Delimiter used to separate detail columns (Default\: \\t)]:DELIMITER:_default' \
+'(-j --json)--delimiter=[Delimiter used to separate detail columns (Default\: \\t)]:DELIMITER:_default' \
+'(-j --json)*-f+[Fields (details about the game) which will be included in the final output]:FIELDS:(title path-icon path-box-art path-game-dir path-hero path-header launch-command source)' \
+'(-j --json)*--fields=[Fields (details about the game) which will be included in the final output]:FIELDS:(title path-icon path-box-art path-game-dir path-hero path-header launch-command source)' \
+'(-d --delimiter)-j[Output details in JSON format]' \
+'(-d --delimiter)--json[Output details in JSON format]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" : \
+'(-j --json)-d+[Delimiter used to separate detail columns (Default\: \\t)]:DELIMITER:_default' \
+'(-j --json)--delimiter=[Delimiter used to separate detail columns (Default\: \\t)]:DELIMITER:_default' \
+'(-j --json)*-f+[Fields (details about the game) which will be included in the final output]:FIELDS:(title path-icon path-box-art path-game-dir path-hero path-header launch-command source)' \
+'(-j --json)*--fields=[Fields (details about the game) which will be included in the final output]:FIELDS:(title path-icon path-box-art path-game-dir path-hero path-header launch-command source)' \
+'(-d --delimiter)-j[Output details in JSON format]' \
+'(-d --delimiter)--json[Output details in JSON format]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::game_title -- Title of the game as displayed by the list command:_default' \
+&& ret=0
+;;
+(completion)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':shell -- Shell to generate completions for:(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_rgd__subcmd__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rgd-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(completion)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_rgd_commands] )) ||
+_rgd_commands() {
+    local commands; commands=(
+'list:List details of detected games and custom entries' \
+'get:Get details of a specific game or custom entry' \
+'completion:Generate shell completions for supported shells' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rgd commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__completion_commands] )) ||
+_rgd__subcmd__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd completion commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__get_commands] )) ||
+_rgd__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd get commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__help_commands] )) ||
+_rgd__subcmd__help_commands() {
+    local commands; commands=(
+'list:List details of detected games and custom entries' \
+'get:Get details of a specific game or custom entry' \
+'completion:Generate shell completions for supported shells' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rgd help commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__help__subcmd__completion_commands] )) ||
+_rgd__subcmd__help__subcmd__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd help completion commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__help__subcmd__get_commands] )) ||
+_rgd__subcmd__help__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd help get commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__help__subcmd__help_commands] )) ||
+_rgd__subcmd__help__subcmd__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd help help commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__help__subcmd__list_commands] )) ||
+_rgd__subcmd__help__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd help list commands' commands "$@"
+}
+(( $+functions[_rgd__subcmd__list_commands] )) ||
+_rgd__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'rgd list commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_rgd" ]; then
+    _rgd "$@"
+else
+    compdef _rgd rgd
+fi

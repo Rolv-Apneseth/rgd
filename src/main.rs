@@ -22,6 +22,7 @@ fn main() -> Result<()> {
     let res = match args.command {
         Command::List(cmd) => cmd.handle(),
         Command::Get(cmd) => cmd.handle(),
+        Command::Completion(cmd) => cmd.handle(),
     };
 
     res.inspect_err(|e| {

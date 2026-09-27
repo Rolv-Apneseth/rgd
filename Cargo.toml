@@ -21,6 +21,7 @@ dirs = { version = "7.0" }
 serde_json = { version = "1.0" }
 clap = { version = "4.6", features = ["derive", "env"] }
 color-eyre = { version = "0.6", features = ["url"] }
+clap_complete = "4.6.11"
 
 [dev-dependencies]
 pretty_assertions = "1.4"

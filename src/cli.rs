@@ -3,7 +3,7 @@ use std::io::{Read, stdin};
 use clap::{Parser, Subcommand};
 use color_eyre::eyre::Context;
 
-use crate::{data::GameField, handlers::{get, list}};
+use crate::{data::GameField, handlers::{completion, get, list}};
 
 #[derive(Parser, Debug)]
 #[command(version, about)]
@@ -24,6 +24,10 @@ pub enum Command {
     /// the specified entry if found.
     #[command()]
     Get(get::Command),
+
+    /// Generate shell completions for supported shells.
+    #[command()]
+    Completion(completion::Command),
 }
 
 /// Argument(s) used to identify a specific game / custom entry.

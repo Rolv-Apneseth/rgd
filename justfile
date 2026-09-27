@@ -8,6 +8,7 @@ alias rr := run-release
 alias p := publish
 alias g := gif
 alias dg := develop-gif
+alias com := completions
 
 # COMMANDS -----------------------------------------------------------------------------------------
 
@@ -56,3 +57,9 @@ gif:
 # Re-generate the demo GIF whenever `demo.tape` is modified
 develop-gif:
     echo assets/demo.tape | entr vhs /_ --output assets/demo.gif
+
+# Generate completions
+completions: build
+    cargo run --release completion bash > completions/rgd.bash.in
+    cargo run --release completion zsh > completions/rgd.zsh.in
+    cargo run --release completion fish > completions/rgd.fish.in
